@@ -1,20 +1,19 @@
 ---
+import Layout from '../Layouts/Layout.astro';
+import Card from '../Components/Card.astro';
+import { getPosts } from '../../lib/api';
 
+let posts = await getPosts();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro 1</title>
-	</head>
-	<body>		
-        <a href="/">Inicio</a>
-        <a href="/about/">Sobre mi</a>
-		<a href="/blog/">Blog</a>
-        
-        <h1>Blog</h1>
-	</body>
-</html>
+<Layout title="Dinos!">
+    <section class="p-2 grid gap-4 overflow-hidden grid-cols-1 place-items-center md:grid-cols-3">
+        {
+            posts.map((post: any) => (
+                <>
+                    <Card {post} />
+                </>
+            ))
+        }
+    </section>
+</Layout>
