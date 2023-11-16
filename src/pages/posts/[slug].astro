@@ -1,12 +1,14 @@
 ---
-import { getPosts } from "../../../lib/api"
+import { getPosts } from '../../../lib/api';
+
 const { slug } = Astro.params;
-import Layout  from "../../Layouts/Layout.astro"
+
+import Layout from '../../Layouts/Layout.astro';
 
 export async function getStaticPaths() {
     let dinos = await getPosts();
 
-    return dinos.map((post) => {
+    return dinos.map((post : any) => {
         return {
             params: { slug: post.slug },
             props: {
@@ -48,14 +50,7 @@ const { title, content, image, meta } = Astro.props;
 
             <article class="text-elipsis overflow-hidden lg:p-3">
                 <Fragment set:html={content} />
-
-                
             </article>
-            
-           
-        </div>
-        <div class="bg-slate-700 p-5 rounded-sm my-2">
-            <p><a href="/blog"> VOLVER</a></p>
         </div>
     </section>
 </Layout>
