@@ -42,10 +42,10 @@ const { title, content, image, meta } = Astro.props;
                 <h3 class="text-4xl font-extrabold">Info</h3>
                 <p>
                     <strong>Size:</strong>
-                    {meta.size.replace('.', ' with a')}
+                    {meta['size']}
                 </p>
-                <p><strong>Weight:</strong> {meta.weight}</p>
-                <p><strong>Habitat:</strong> {meta.habitat}</p>
+                <p><strong>Weight:</strong> {meta['weight']}</p>
+                <p><strong>Habitat:</strong> {meta['habitat']}</p>
             </div>
 
             <article class="text-elipsis overflow-hidden lg:p-3">
